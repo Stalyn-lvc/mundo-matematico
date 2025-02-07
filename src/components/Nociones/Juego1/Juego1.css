@@ -1,0 +1,297 @@
+.NocJ1-juego {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.NocJ1-juego-contenido {
+    background: rgba(191, 219, 254, 0.98);
+    padding: 2rem;
+    border-radius: 1rem;
+    text-align: center;
+    width: 90%;
+    max-width: 1100px;
+    margin: 1rem auto;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+}
+
+.NocJ1-instruccion {
+    text-align: center;
+    margin-bottom: 2rem;
+}
+
+.NocJ1-instruccion-header {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
+    margin-bottom: 1rem;
+}
+
+.NocJ1-instruccion p {
+    font-size: 1.8rem;
+    color: #1e3a8a;
+    font-weight: bold;
+    margin: 0;
+}
+
+.NocJ1-instruccion-audio {
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    padding: 0.5rem;
+}
+
+.NocJ1-opciones-imagenes {
+    display: flex;
+    justify-content: center;
+    gap: 1.5rem;
+    margin-top: 2rem;
+    flex-wrap: nowrap; /* Forzar layout horizontal */
+    overflow-x: auto; /* Permitir scroll horizontal si es necesario */
+    padding: 1rem; /* Espacio para el scroll */
+    width: 100%;
+}
+
+.NocJ1-opcion-imagen-container {
+    flex: 0 0 auto; /* Evitar que las tarjetas se estiren o encojan */
+    width: 250px; /* Ancho fijo más pequeño */
+    height: 250px;
+    background: white;
+    border-radius: 1rem;
+    padding: 1rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    animation: NocJ1-float 3s ease-in-out infinite;
+    transition: transform 0.3s ease;
+}
+
+.NocJ1-opcion-imagen-container:hover {
+    transform: scale(1.05);
+}
+
+.NocJ1-opcion-imagen {
+    max-width: 90%;
+    max-height: 90%;
+    object-fit: contain;
+}
+
+.NocJ1-feedback {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 15rem;
+    animation: NocJ1-bounce 1.5s ease-in-out;
+    pointer-events: none;
+    text-shadow: 4px 4px 8px rgba(0, 0, 0, 0.3);
+    z-index: 2000;
+}
+
+.NocJ1-feedback.correcto {
+    color: #fbbf24;
+}
+
+.NocJ1-feedback.incorrecto {
+    color: #ef4444;
+}
+
+.NocJ1-modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.7);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 2001;
+}
+
+.NocJ1-modal-contenido {
+    background: white;
+    padding: 3rem;
+    border-radius: 2rem;
+    text-align: center;
+    max-width: 500px;
+    width: 90%;
+    animation: NocJ1-modalAppear 0.5s ease-out;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+}
+
+.NocJ1-modal-contenido h2 {
+    font-size: 3.5rem;
+    color: #1e3a8a;
+    margin-bottom: 1.5rem;
+}
+
+.NocJ1-modal-contenido p {
+    font-size: 2.5rem;
+    margin-bottom: 2rem;
+}
+
+.NocJ1-modal-contenido button {
+    background: #4ade80;
+    color: white;
+    border: none;
+    padding: 1rem 2.5rem;
+    font-size: 1.5rem;
+    border-radius: 1rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.NocJ1-modal-contenido button:hover {
+    background: #22c55e;
+    transform: scale(1.05);
+}
+
+@keyframes NocJ1-float {
+    0%, 100% {
+        transform: translateY(0);
+    }
+    50% {
+        transform: translateY(-10px);
+    }
+}
+
+@keyframes NocJ1-bounce {
+    0%, 100% { 
+        transform: translate(-50%, -50%) scale(1); 
+    }
+    50% { 
+        transform: translate(-50%, -50%) scale(1.4); 
+    }
+}
+
+@keyframes NocJ1-modalAppear {
+    from { 
+        transform: scale(0.8); 
+        opacity: 0; 
+    }
+    to { 
+        transform: scale(1); 
+        opacity: 1; 
+    }
+}
+
+.NocJ1-opcion-imagen-container:nth-child(1) {
+    animation-delay: 0s;
+}
+
+.NocJ1-opcion-imagen-container:nth-child(2) {
+    animation-delay: 0.5s;
+}
+
+.NocJ1-opcion-imagen-container:nth-child(3) {
+    animation-delay: 1s;
+}
+
+@media (max-width: 768px) {
+    .NocJ1-juego-contenido {
+        width: 95%;
+        padding: 1rem;
+    }
+
+    .NocJ1-instruccion p {
+        font-size: 1.4rem;
+    }
+
+    .NocJ1-opcion-imagen-container {
+        width: 180px;
+        height: 180px;
+    }
+
+    .NocJ1-opciones-imagenes {
+        gap: 1rem;
+    }
+
+    .NocJ1-feedback {
+        font-size: 12rem;
+    }
+
+    .NocJ1-modal-contenido h2 {
+        font-size: 2.5rem;
+    }
+
+    .NocJ1-modal-contenido p {
+        font-size: 2rem;
+    }
+
+    .NocJ1-modal-contenido button {
+        font-size: 1.2rem;
+        padding: 0.8rem 2rem;
+    }
+
+    @media (max-width: 480px) {
+        .NocJ1-juego-contenido {
+            width: 98%;
+            padding: 0.5rem;
+            margin: 0.5rem auto;
+        }
+    
+        .NocJ1-instruccion p {
+            font-size: 1.2rem;
+        }
+    
+        .NocJ1-opciones-imagenes {
+            flex-direction: column;
+            align-items: center;
+            gap: 0.5rem;
+            overflow-x: visible;
+        }
+    
+        .NocJ1-opcion-imagen-container {
+            width: 90%;
+            max-width: 250px;
+            height: auto;
+            aspect-ratio: 1 / 1;
+        }
+    
+        .NocJ1-feedback {
+            font-size: 8rem;
+        }
+    
+        .NocJ1-modal-contenido {
+            width: 95%;
+            padding: 1.5rem;
+        }
+    
+        .NocJ1-modal-contenido h2 {
+            font-size: 2rem;
+        }
+    
+        .NocJ1-modal-contenido p {
+            font-size: 1.5rem;
+        }
+    
+        .NocJ1-modal-contenido button {
+            font-size: 1rem;
+            padding: 0.6rem 1.5rem;
+        }
+    }
+    
+    /* Media query for very small mobile devices */
+    @media (max-width: 320px) {
+        .NocJ1-instruccion p {
+            font-size: 1rem;
+        }
+    
+        .NocJ1-feedback {
+            font-size: 6rem;
+        }
+    
+        .NocJ1-modal-contenido h2 {
+            font-size: 1.8rem;
+        }
+    
+        .NocJ1-modal-contenido p {
+            font-size: 1.3rem;
+        }
+    }
+}

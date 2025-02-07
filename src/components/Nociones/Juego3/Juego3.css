@@ -1,0 +1,227 @@
+.NocJ3-juego {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.NocJ3-juego-contenido {
+    background: rgba(191, 219, 254, 0.98);
+    padding: 1.5rem;
+    border-radius: 1rem;
+    text-align: center;
+    width: 60%;
+    max-width: 1000px;
+    margin: 0.5rem auto;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+}
+
+.NocJ3-instruccion {
+    text-align: center;
+    margin-bottom: 2rem;
+}
+
+.NocJ3-instruccion-header {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
+    margin-bottom: 1rem;
+}
+
+.NocJ3-instruccion p {
+    font-size: 1.8rem;
+    color: #1e3a8a;
+    font-weight: bold;
+    margin: 0;
+}
+
+.NocJ3-instruccion-audio {
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    padding: 0.5rem;
+}
+
+.NocJ3-opciones-imagenes {
+    display: flex;
+    justify-content: center;
+    gap: 4rem;
+    margin-top: 2rem;
+    flex-wrap: wrap;
+}
+
+.NocJ3-opcion-imagen-container {
+    background: white;
+    border-radius: 1rem;
+    padding: 1.2rem;
+    width: 280px;
+    height: 240px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    animation: NocJ3-float 3s ease-in-out infinite;
+    transition: transform 0.3s ease;
+}
+
+.NocJ3-opcion-imagen-container:hover {
+    transform: scale(1.05);
+}
+
+.NocJ3-opcion-imagen {
+    max-width: 90%;
+    max-height: 90%;
+    object-fit: contain;
+}
+
+.NocJ3-feedback {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 15rem;
+    animation: NocJ3-bounce 1.5s ease-in-out;
+    pointer-events: none;
+    text-shadow: 4px 4px 8px rgba(0, 0, 0, 0.3);
+    z-index: 2000;
+}
+
+.NocJ3-feedback.correcto {
+    color: #fbbf24;
+}
+
+.NocJ3-feedback.incorrecto {
+    color: #ef4444;
+}
+
+/* Modal */
+.NocJ3-modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.7);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 2001;
+}
+
+.NocJ3-modal-contenido {
+    background: white;
+    padding: 3rem;
+    border-radius: 2rem;
+    text-align: center;
+    max-width: 500px;
+    width: 90%;
+    animation: NocJ3-modalAppear 0.5s ease-out;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+}
+
+.NocJ3-modal-contenido h2 {
+    font-size: 3.5rem;
+    color: #1e3a8a;
+    margin-bottom: 1.5rem;
+}
+
+.NocJ3-modal-contenido p {
+    font-size: 2.5rem;
+    margin-bottom: 2rem;
+}
+
+.NocJ3-modal-contenido button {
+    background: #4ade80;
+    color: white;
+    border: none;
+    padding: 1rem 2.5rem;
+    font-size: 1.5rem;
+    border-radius: 1rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.NocJ3-modal-contenido button:hover {
+    background: #22c55e;
+    transform: scale(1.05);
+}
+
+/* Animaciones */
+@keyframes NocJ3-float {
+    0%, 100% {
+        transform: translateY(0);
+    }
+    50% {
+        transform: translateY(-10px);
+    }
+}
+
+@keyframes NocJ3-bounce {
+    0%, 100% { 
+        transform: translate(-50%, -50%) scale(1); 
+    }
+    50% { 
+        transform: translate(-50%, -50%) scale(1.4); 
+    }
+}
+
+@keyframes NocJ3-modalAppear {
+    from { 
+        transform: scale(0.8); 
+        opacity: 0; 
+    }
+    to { 
+        transform: scale(1); 
+        opacity: 1; 
+    }
+}
+
+/* Delays de animación */
+.NocJ3-opcion-imagen-container:nth-child(1) {
+    animation-delay: 0s;
+}
+
+.NocJ3-opcion-imagen-container:nth-child(2) {
+    animation-delay: 0.5s;
+}
+
+/* Media Queries */
+@media (max-width: 768px) {
+    .NocJ3-juego-contenido {
+        width: 95%;
+        padding: 0.8rem;
+    }
+
+    .NocJ3-instruccion p {
+        font-size: 1.4rem;
+    }
+
+    .NocJ3-opciones-imagenes {
+        gap: 1.5rem;
+    }
+
+    .NocJ3-opcion-imagen-container {
+        width: 230px;
+        height: 200px;
+        padding: 0.8rem;
+    }
+
+    .NocJ3-feedback {
+        font-size: 12rem;
+    }
+
+    .NocJ3-modal-contenido h2 {
+        font-size: 2.5rem;
+    }
+
+    .NocJ3-modal-contenido p {
+        font-size: 2rem;
+    }
+
+    .NocJ3-modal-contenido button {
+        font-size: 1.2rem;
+        padding: 0.8rem 2rem;
+    }
+}

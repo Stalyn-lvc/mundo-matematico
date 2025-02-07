@@ -1,0 +1,338 @@
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background-image: url('../../assets/imagenes/FondoHome.jpg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    min-height: 100vh;
+    overflow-x: hidden;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+.Home-header {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: clamp(0.5rem, 2vw, 1rem);
+    padding: clamp(0.5rem, 2vw, 1rem);
+    position: relative;
+}
+
+.Home-titulo-contenedor {
+    background-image: url('../../assets/imagenes/tabla.png');
+    background-size: 100% 100%;
+    background-repeat: no-repeat;
+    background-position: center;
+    width: clamp(280px, 60%, 600px);  /* Reducido el ancho máximo y el porcentaje */
+    min-height: clamp(80px, 15vw, 120px);
+    height: auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto;
+    padding: clamp(0.8rem, 2vw, 1.5rem);
+    box-sizing: border-box;
+}
+
+.Home-titulo-contenedor h2 {
+    color: #fdfefe;
+    text-shadow: 
+        2px 2px 0 #000066,
+        -2px -2px 0 #000066,
+        2px -2px 0 #000066,
+        -2px 2px 0 #000066;
+    margin: 0;
+    padding: clamp(0.3rem, 1.5vw, 0.8rem);
+    font-size: clamp(1.2rem, 3vw, 2rem);
+    text-align: center;
+    width: 100%;
+    line-height: 1.3;
+    word-wrap: break-word;
+}
+
+.Home-seccion-modulos {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 2rem;
+    box-sizing: border-box;
+}
+
+.Home-tarjetas-container {
+    display: flex;
+    gap: 2rem;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 1rem;
+    box-sizing: border-box;
+}
+
+.Home-tarjeta {
+    background: rgb(228, 228, 228);
+    border-radius: 1rem;
+    padding: 2rem;
+    width: 250px;
+    height: 320px;
+    text-align: center;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    animation: Home-floatAnimation 3s ease-in-out infinite;
+    transition: all 0.3s ease;
+    cursor: pointer;
+    position: relative;
+    overflow: hidden;
+}
+
+.Home-tarjeta:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 15px rgba(0, 0, 0, 0.2);
+}
+
+.Home-tarjeta:nth-child(2) {
+    width: 250px;
+    height: 350px;
+    padding: 2.2rem;
+    transform: scale(1.05);
+    animation: Home-floatAnimationMiddle 3s ease-in-out infinite;
+}
+
+.Home-tarjeta:nth-child(2):hover {
+    transform: translateY(-5px) scale(1.05);
+}
+
+.Home-tarjeta:nth-child(3) {
+    height: 320px;
+}
+
+.Home-imagen-modulo {
+    width: 100%;
+    height: 150px;
+    margin-bottom: 1rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+}
+
+.Home-imagen-modulo img {
+    max-width: 100%;
+    max-height: 100%;
+    object-fit: contain;
+    transition: transform 0.3s ease;
+}
+
+.Home-tarjeta:hover .Home-imagen-modulo img {
+    transform: scale(1.1);
+}
+
+.Home-tarjeta h3 {
+    color: #1e40af;
+    font-size: 1.5rem;
+    margin-bottom: 0.5rem;
+    position: relative;
+    z-index: 1;
+}
+
+.Home-tarjeta p {
+    color: #6b7280;
+    margin-bottom: 1.5rem;
+    position: relative;
+    z-index: 1;
+}
+
+.Home-play-button {
+    background: #4ade80;
+    color: white;
+    border: none;
+    padding: 0.75rem 2.5rem;
+    border-radius: 2rem;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    position: relative;
+    z-index: 1;
+}
+
+.Home-play-button:hover {
+    background: #22c55e;
+    transform: scale(1.05);
+}
+
+@keyframes Home-floatAnimation {
+    0%, 100% {
+        transform: translateY(0);
+    }
+    50% {
+        transform: translateY(-10px);
+    }
+}
+
+@keyframes Home-floatAnimationMiddle {
+    0%, 100% {
+        transform: translateY(0) scale(1.05);
+    }
+    50% {
+        transform: translateY(-10px) scale(1.05);
+    }
+}
+
+@keyframes flotar {
+    0%, 100% {
+        transform: translateY(0);
+    }
+    50% {
+        transform: translateY(-15px);
+    }
+}
+
+.Home-tarjeta:nth-child(1) {
+    animation-delay: 0s;
+}
+
+.Home-tarjeta:nth-child(2) {
+    animation-delay: 0.5s;
+}
+
+.Home-tarjeta:nth-child(3) {
+    animation-delay: 1s;
+}
+
+/* Adaptaciones para móviles y tablets */
+@media (max-width: 768px) {
+    body {
+        background-size: cover;
+    }
+
+    .Home-titulo-contenedor {
+        width: min(90%, 300px);
+        height: clamp(50px, 12vw, 75px);
+    }
+    
+    .Home-titulo-contenedor h2 {
+        font-size: clamp(1rem, 4vw, 1.5rem);
+    }
+
+    .Home-seccion-modulos {
+        padding: 1rem;
+    }
+
+    .Home-tarjetas-container {
+        gap: 1rem;
+        padding: 0.5rem;
+    }
+
+    .Home-tarjeta {
+        width: min(90%, 250px);
+        height: auto;
+        min-height: 300px;
+        padding: 1.5rem;
+        margin: 0 auto;
+    }
+    
+    .Home-tarjeta:nth-child(2) {
+        width: min(90%, 270px);
+        height: auto;
+        min-height: 330px;
+        padding: 1.5rem;
+    }
+
+    .Home-imagen-modulo {
+        height: clamp(80px, 20vw, 100px);
+        padding: 0.5rem;
+    }
+
+    .Home-imagen-modulo img {
+        width: clamp(100px, 80%, 150px);
+        height: auto;
+    }
+
+    .Home-tarjeta h3 {
+        font-size: clamp(1.1rem, 4vw, 1.3rem);
+    }
+
+    .Home-play-button {
+        padding: 0.6rem 2rem;
+        font-size: clamp(0.9rem, 3vw, 1rem);
+    }
+}
+
+/* Ajustes específicos para móviles pequeños */
+@media (max-width: 480px) {
+    .Home-tarjetas-container {
+        gap: 0.8rem;
+    }
+
+    .Home-tarjeta {
+        width: min(95%, 230px);
+        padding: 1rem;
+        min-height: 280px;
+    }
+
+    .Home-tarjeta:nth-child(2) {
+        width: min(95%, 250px);
+        min-height: 300px;
+    }
+
+    .Home-imagen-modulo {
+        height: clamp(70px, 15vw, 90px);
+    }
+
+    .Home-titulo-contenedor h2 {
+        font-size: clamp(0.9rem, 3.5vw, 1.2rem);
+    }
+}
+
+/* Ajustes para pantallas muy pequeñas */
+@media (max-width: 320px) {
+    .Home-tarjeta {
+        width: 95%;
+        min-height: 260px;
+        padding: 0.8rem;
+    }
+
+    .Home-tarjeta:nth-child(2) {
+        width: 95%;
+        min-height: 280px;
+    }
+
+    .Home-imagen-modulo {
+        height: 60px;
+    }
+
+    .Home-play-button {
+        padding: 0.5rem 1.5rem;
+        font-size: 0.9rem;
+    }
+}
+
+/* Ajustes para orientación landscape en móviles */
+@media (max-height: 500px) and (orientation: landscape) {
+    .Home-seccion-modulos {
+        padding: 0.5rem;
+    }
+
+    .Home-tarjetas-container {
+        gap: 0.5rem;
+    }
+
+    .Home-tarjeta {
+        min-height: 250px;
+    }
+
+    .Home-tarjeta:nth-child(2) {
+        min-height: 270px;
+    }
+
+    .Home-imagen-modulo {
+        height: clamp(50px, 15vh, 70px);
+    }
+}

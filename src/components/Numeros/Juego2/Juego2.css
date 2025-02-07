@@ -1,0 +1,316 @@
+.NumJ2-juego-mundo {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: clamp(0.5rem, 2vw, 2rem);
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+.NumJ2-juego-contenido {
+    background: rgba(191, 219, 254, 0.98);
+    padding: clamp(1rem, 2vw, 2rem);
+    border-radius: clamp(0.5rem, 1.5vw, 1.5rem);
+    text-align: center;
+    width: min(95%, 1000px);
+    margin: 0.5rem auto;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.15);
+}
+
+.NumJ2-instruccion {
+    text-align: center;
+    margin-bottom: 2rem;
+}
+
+.NumJ2-instruccion-header {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
+    margin-bottom: 1rem;
+}
+
+.NumJ2-instruccion p {
+    font-size: 1.8rem;
+    color: #1e3a8a;
+    font-weight: bold;
+    margin: 0;
+}
+
+.NumJ2-instruccion-audio {
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    padding: 0.5rem;
+}
+
+.NumJ2-elementos-container {
+    background-color: rgba(221, 183, 227, 0.98);
+    padding: clamp(15px, 3vw, 25px);
+    border-radius: clamp(10px, 2vw, 20px);
+    display: flex;
+    gap: clamp(8px, 1.5vw, 20px);
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    margin: clamp(10px, 2vw, 20px) auto;
+    width: min(95%, 800px);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+}
+
+.NumJ2-fruta {
+    font-size: clamp(2rem, 5vw, 4rem);
+    animation: NumJ2-aparecer 0.6s ease-out;
+    filter: drop-shadow(2px 2px 2px rgba(0, 0, 0, 0.2));
+}
+
+.NumJ2-opciones-numeros {
+    display: flex;
+    justify-content: center;
+    gap: clamp(0.5rem, 2vw, 2rem);
+    margin-top: clamp(1rem, 2vw, 2rem);
+    padding: clamp(0.5rem, 1vw, 1rem);
+    width: min(95%, 800px);
+    margin-inline: auto;
+}
+
+.NumJ2-opcion-numero-container {
+    width: clamp(60px, 15vw, 120px);
+    aspect-ratio: 1;
+    border-radius: clamp(0.5rem, 2vw, 1.5rem);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+    animation: NumJ2-float 3s ease-in-out infinite;
+    transition: all 0.3s ease;
+    border: clamp(1px, 0.3vw, 3px) solid white;
+    position: relative;
+    overflow: hidden;
+}
+
+.NumJ2-opcion-numero {
+    font-size: clamp(1.5rem, 6vw, 4rem);
+    font-weight: 700;
+    color: #2563eb;
+    line-height: 1;
+    transition: transform 0.3s ease;
+}
+
+/* Colores de fondo para los contenedores */
+.NumJ2-opcion-numero-container:nth-child(1) {
+    background: linear-gradient(145deg, #FFE5E5, #FFC7C7);
+    animation-delay: 0s;
+}
+
+.NumJ2-opcion-numero-container:nth-child(2) {
+    background: linear-gradient(145deg, #E0F4F1, #C7EAE6);
+    animation-delay: 0.3s;
+}
+
+.NumJ2-opcion-numero-container:nth-child(3) {
+    background: linear-gradient(145deg, #FFF3D4, #FFE9B0);
+    animation-delay: 0.6s;
+}
+
+.NumJ2-opcion-numero-container:hover {
+    transform: translateY(-5px) scale(1.05);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+}
+
+.NumJ2-opcion-numero-container:hover .NumJ2-opcion-numero {
+    transform: scale(1.1);
+}
+
+/* Efecto de brillo */
+.NumJ2-opcion-numero-container::after {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: linear-gradient(
+        to bottom right,
+        rgba(255, 255, 255, 0.2) 0%,
+        rgba(255, 255, 255, 0.2) 40%,
+        rgba(255, 255, 255, 0.4) 50%,
+        rgba(255, 255, 255, 0.2) 60%,
+        rgba(255, 255, 255, 0.2) 100%
+    );
+    transform: rotate(45deg);
+    transition: all 0.3s ease;
+    opacity: 0;
+}
+
+.NumJ2-opcion-numero-container:hover::after {
+    animation: NumJ2-shine 1.5s ease-in-out;
+}
+
+.NumJ2-feedback {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: clamp(6rem, 12vw, 12rem);
+    animation: NumJ2-bounce 1.5s ease-in-out;
+    pointer-events: none;
+    text-shadow: 3px 3px 6px rgba(0, 0, 0, 0.3);
+    z-index: 2000;
+}
+
+.NumJ2-feedback.correcto {
+    color: #fbbf24;
+}
+
+.NumJ2-feedback.incorrecto {
+    color: #ef4444;
+}
+
+.NumJ2-modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.8);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 2001;
+    backdrop-filter: blur(5px);
+}
+
+.NumJ2-modal-contenido {
+    background: white;
+    padding: clamp(1.5rem, 4vw, 3rem);
+    border-radius: clamp(1rem, 2vw, 2rem);
+    text-align: center;
+    width: min(90%, 500px);
+    animation: NumJ2-modalAppear 0.5s ease-out;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+}
+
+.NumJ2-modal-contenido h2 {
+    font-size: clamp(1.8rem, 4vw, 3rem);
+    color: #1e3a8a;
+    margin-bottom: clamp(1rem, 2vw, 1.5rem);
+}
+
+.NumJ2-modal-contenido p {
+    font-size: clamp(1.2rem, 2.5vw, 2rem);
+    margin-bottom: clamp(1.5rem, 3vw, 2rem);
+    color: #4b5563;
+}
+
+.NumJ2-modal-contenido button {
+    background: #4ade80;
+    color: white;
+    border: none;
+    padding: clamp(0.8rem, 1.5vw, 1.2rem) clamp(1.5rem, 3vw, 2.5rem);
+    font-size: clamp(1rem, 1.5vw, 1.5rem);
+    border-radius: clamp(0.5rem, 1vw, 1rem);
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+}
+
+.NumJ2-modal-contenido button:hover {
+    background: #22c55e;
+    transform: scale(1.05);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+}
+
+/* Animaciones */
+@keyframes NumJ2-float {
+    0%, 100% {
+        transform: translateY(0);
+    }
+    50% {
+        transform: translateY(-5px);
+    }
+}
+
+@keyframes NumJ2-bounce {
+    0%, 100% { 
+        transform: translate(-50%, -50%) scale(1); 
+    }
+    50% { 
+        transform: translate(-50%, -50%) scale(1.2); 
+    }
+}
+
+@keyframes NumJ2-modalAppear {
+    from { 
+        transform: scale(0.8); 
+        opacity: 0; 
+    }
+    to { 
+        transform: scale(1); 
+        opacity: 1; 
+    }
+}
+
+@keyframes NumJ2-aparecer {
+    from { 
+        opacity: 0;
+        transform: scale(0.8);
+    }
+    to { 
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+@keyframes NumJ2-shine {
+    0% {
+        transform: rotate(45deg) translateY(-100%);
+        opacity: 0;
+    }
+    50% {
+        opacity: 0.3;
+    }
+    100% {
+        transform: rotate(45deg) translateY(100%);
+        opacity: 0;
+    }
+}
+
+/* Ajustes para diferentes tamaños de pantalla */
+@media (min-width: 768px) {
+    .NumJ2-opcion-numero {
+        font-size: clamp(2rem, 4vw, 3.5rem);
+    }
+    
+    .NumJ2-opcion-numero-container {
+        width: clamp(80px, 12vw, 140px);
+    }
+}
+
+@media (min-width: 1024px) {
+    .NumJ2-opcion-numero {
+        font-size: clamp(2.5rem, 3.5vw, 4rem);
+    }
+    
+    .NumJ2-opcion-numero-container {
+        width: clamp(100px, 10vw, 160px);
+    }
+}
+
+/* Mantener proporción en pantallas muy pequeñas */
+@media (max-width: 350px) {
+    .NumJ2-opcion-numero {
+        font-size: clamp(1.2rem, 5vw, 2rem);
+    }
+    
+    .NumJ2-opcion-numero-container {
+        width: clamp(50px, 12vw, 80px);
+    }
+    
+    .NumJ2-fruta {
+        font-size: clamp(1.5rem, 4vw, 2.5rem);
+    }
+}

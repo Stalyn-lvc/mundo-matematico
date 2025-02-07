@@ -1,0 +1,554 @@
+/* Contenedor principal */
+.formas-juego-colorear {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 2rem;
+    background-color: rgba(224, 247, 255, 0.10);
+    background-image: url();
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+}
+
+/* Header y título */
+.formas-header {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 2rem;
+    padding: 1rem;
+    position: relative;
+}
+
+.formas-titulo-contenedor {
+    background-image: url('../../../assets/imagenes/tabla.png');
+    background-size: 70% 100%;
+    background-repeat: no-repeat;
+    background-position: center;
+    height: 100px;
+    width: 600px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto;
+}
+
+.formas-titulo-contenedor h2 {
+    color: #fdfefe;
+    text-shadow:
+        2px 2px 0 #000066,
+        -2px -2px 0 #000066,
+        2px -2px 0 #000066,
+        -2px 2px 0 #000066;
+    margin: 0;
+    padding: 0;
+    font-size: 2rem;
+    text-align: center;
+}
+
+/* Botón volver */
+.formas-volver {
+    position: absolute;
+    left: 20%;
+    background: transparent;
+    color: #000000;
+    font-size: 3rem;
+    padding: 0.5rem;
+    border: none;
+    cursor: pointer;
+    transition: transform 0.3s ease;
+    z-index: 2;
+}
+
+.formas-volver:hover {
+    transform: scale(1.1);
+}
+
+/* Contenido del juego */
+.formas-juego-contenido {
+    background: rgba(191, 219, 254, 0.98);
+    padding: 2rem;
+    border-radius: 1rem;
+    max-width: 1000px;
+    margin: 0 auto;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+    display: flex;
+    gap: 2rem;
+    position: relative;
+}
+
+/* Sección de colores */
+.formas-colores-seccion {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    padding: 1.5rem;
+    background: rgba(255, 255, 255, 0.3);
+    border-radius: 1rem;
+    min-width: 80px;
+    width: 180px;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+}
+
+/* Paleta de colores */
+.formas-paleta-colores {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    margin: 1rem 0;
+}
+
+.formas-color-btn {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    border: 3px solid #ffffff;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+.formas-color-btn:hover {
+    transform: scale(1.1);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+}
+
+.formas-color-btn.formas-seleccionado {
+    border: 4px solid #000000;
+    transform: scale(1.1);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.4);
+}
+
+/* Área de dibujo */
+.formas-area-dibujo {
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+
+/* Guía de figura */
+.formas-figura-guia {
+    position: relative;
+    width: 100%;
+    text-align: center;
+    font-size: 1.5rem;
+    color: #1e40af;
+    font-weight: bold;
+    margin-bottom: 1rem;
+    padding: 0.8rem;
+    background: rgba(255, 255, 255, 0.9);
+    border-radius: 1rem;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+}
+
+.formas-figura-guia span {
+    display: block;
+    font-size: 1.7rem;
+    text-transform: capitalize;
+    margin-top: 0.5rem;
+}
+
+.formas-canvas-container {
+    width: 500px;
+    height: 400px;
+    margin: 0 auto;
+    background: white;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    position: relative;
+}
+
+.formas-lienzo-principal {
+    position: absolute;
+    top: 0;
+    left: 0;
+    border-radius: 10px;
+    background: transparent;
+    z-index: 2;
+    width: 500px;
+    /* Reducido */
+    height: 400px;
+}
+
+.formas-lienzo-plantilla {
+    position: absolute;
+    top: 0;
+    left: 0;
+    border-radius: 10px;
+    background: white;
+    z-index: 1;
+    pointer-events: none;
+    width: 500px;
+    /* Reducido */
+    height: 400px;
+}
+
+/* Mensaje de error */
+.formas-mensaje-error {
+    color: #ef4444;
+    font-size: 1.1rem;
+    margin: 1rem 0;
+    padding: 0.75rem;
+    background-color: rgba(239, 68, 68, 0.1);
+    border-radius: 0.5rem;
+    text-align: center;
+    animation: formas-aparecer 0.3s ease-out;
+}
+
+/* Controles */
+.formas-controles {
+    display: flex;
+    gap: 1.5rem;
+    justify-content: center;
+    margin-top: 1rem;
+}
+
+.formas-controles button {
+    padding: 0.75rem 2.5rem;
+    font-size: 1.2rem;
+    border: none;
+    border-radius: 9999px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    background: #4ade80;
+    color: white;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    font-weight: bold;
+}
+
+.formas-controles button:hover {
+    background: #22c55e;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.15);
+}
+
+/* Estrellas y feedback */
+.formas-estrellas {
+    position: absolute;
+    right: 20%;
+    font-size: 2.5rem;
+    color: #fbbf24;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+.formas-feedback {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 6rem;
+    animation: formas-bounce 1.5s ease-in-out;
+    pointer-events: none;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+    z-index: 2000;
+}
+
+.formas-feedback.formas-correcto {
+    color: #fbbf24;
+}
+
+.formas-feedback.formas-incorrecto {
+    color: #ef4444;
+}
+
+/* Modal */
+.formas-modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.6);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 2000;
+}
+
+.formas-modal-contenido {
+    background-color: white;
+    padding: 3rem;
+    border-radius: 20px;
+    text-align: center;
+    animation: formas-aparecer 0.3s ease-out;
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.2);
+}
+
+.formas-modal-contenido h2 {
+    color: #fbbf24;
+    font-size: 2.5rem;
+    margin-bottom: 1.5rem;
+}
+
+.formas-modal-contenido p {
+    font-size: 1.5rem;
+    margin-bottom: 2rem;
+}
+
+.formas-modal-contenido button {
+    padding: 1rem 2.5rem;
+    font-size: 1.2rem;
+    background: #4ade80;
+    color: white;
+    border: none;
+    border-radius: 9999px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.formas-modal-contenido button:hover {
+    background: #22c55e;
+    transform: translateY(-2px);
+}
+
+/* Animaciones */
+@keyframes formas-bounce {
+
+    0%,
+    100% {
+        transform: translate(-50%, -50%) scale(1);
+    }
+
+    50% {
+        transform: translate(-50%, -50%) scale(1.2);
+    }
+}
+
+@keyframes formas-aparecer {
+    from {
+        opacity: 0;
+        transform: scale(0.8);
+    }
+
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+/* Estilos responsivos */
+@media (max-width: 1024px) {
+    .formas-juego-contenido {
+        flex-direction: column;
+        align-items: center;
+        padding: 1.5rem;
+        width: 95%;
+        max-width: 800px;
+    }
+
+    .formas-colores-seccion {
+        width: 100%;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .formas-paleta-colores {
+        flex-direction: row;
+        justify-content: center;
+    }
+
+    .formas-canvas-container {
+        width: 500px;
+        height: 400px;
+    }
+}
+
+@media (max-width: 768px) {
+    .formas-titulo-contenedor {
+        width: 300px;
+        height: 75px;
+    }
+
+    .formas-titulo-contenedor h2 {
+        font-size: 1.5rem;
+    }
+
+    .formas-volver {
+        left: 5%;
+        font-size: 2rem;
+    }
+
+    .formas-canvas-container {
+        width: 500px;
+        height: 400px;
+    }
+
+    .formas-estrellas {
+        right: 5%;
+        font-size: 2rem;
+    }
+
+    .formas-color-btn {
+        width: 50px;
+        height: 50px;
+    }
+}
+
+@media (max-width: 480px) {
+    .formas-juego-contenido {
+        padding: 0.5rem;
+        max-width: 100%;
+        width: 100%;
+    }
+
+    .formas-colores-seccion {
+        width: 100%;
+        max-width: 250px;
+        margin: 0 auto;
+        padding: 0.5rem;
+        display: flex;
+        justify-content: center;
+    }
+
+    .formas-paleta-colores {
+        flex-direction: row;
+        justify-content: center;
+        gap: 1rem;
+        width: 100%;
+    }
+
+    .formas-color-btn {
+        width: 50px;
+        height: 50px;
+    }
+
+    .formas-canvas-container {
+        width: 100%;
+        max-width: 350px;
+        height: 300px;
+        margin: 0 auto;
+        position: relative;
+    }
+
+    .formas-lienzo-principal,
+    .formas-lienzo-plantilla {
+        width: 100% !important;
+        height: 100% !important;
+    }
+
+    .formas-figura-guia {
+        font-size: 1rem;
+        padding: 0.5rem;
+        margin-bottom: 0.5rem;
+    }
+
+    .formas-controles {
+        gap: 1rem;
+        margin-top: 0.5rem;
+    }
+
+    .formas-controles button {
+        padding: 0.5rem 1.5rem;
+        font-size: 1rem;
+    }
+
+
+@media (max-width: 768px) {
+    .formas-juego-colorear {
+        padding: 0.5rem;
+    }
+
+    .formas-juego-contenido {
+        flex-direction: column;
+        padding: 1rem;
+        gap: 1rem;
+        width: 100%;
+        max-width: 100%;
+    }
+
+    .formas-colores-seccion {
+        width: 100%;
+        flex-direction: row;
+        justify-content: center;
+        padding: 0.5rem;
+    }
+
+    .formas-paleta-colores {
+        flex-direction: row;
+        justify-content: center;
+        gap: 1rem;
+    }
+
+    .formas-color-btn {
+        width: 45px;
+        height: 45px;
+    }
+
+    .formas-area-dibujo {
+        width: 100%;
+    }
+
+    .formas-canvas-container {
+        width: 100%;
+        max-width: 350px;
+        height: 300px;
+        margin: 0 auto;
+    }
+
+    .formas-figura-guia {
+        font-size: 1.2rem;
+        padding: 0.5rem;
+    }
+
+    .formas-controles {
+        gap: 1rem;
+    }
+
+    .formas-controles button {
+        padding: 0.5rem 1.5rem;
+        font-size: 1rem;
+    }
+}
+
+/* Smaller Mobile Devices */
+@media (max-width: 480px) {
+    .formas-canvas-container {
+        max-width: 280px;
+        height: 250px;
+    }
+
+    .formas-color-btn {
+        width: 40px;
+        height: 40px;
+    }
+
+    .formas-figura-guia {
+        font-size: 1rem;
+    }
+
+    .formas-modal-contenido {
+        width: 90%;
+        padding: 1.5rem;
+    }
+
+    .formas-modal-contenido h2 {
+        font-size: 1.8rem;
+    }
+
+    .formas-modal-contenido p {
+        font-size: 1rem;
+    }
+}
+
+/* Touch Device Improvements */
+@media (pointer: coarse) {
+    .formas-color-btn {
+        min-width: 50px;
+        min-height: 50px;
+        margin: 0.25rem;
+    }
+
+    .formas-controles button {
+        padding: 0.75rem 2rem;
+        font-size: 1.1rem;
+    }
+}
+
+
+}

@@ -1,0 +1,295 @@
+.Noc-seccion-juegos {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 2rem;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+.Noc-header {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 1rem;
+    padding: 1rem;
+    position: relative;
+}
+
+.Noc-volver {
+    position: absolute;
+    left: 20%;
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    transition: transform 0.3s ease;
+    padding: 0;
+    width: 80px;
+    height: 50px;
+    background-image: url('../../assets/imagenes/flecha.png');
+    background-size: 100% 100%;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+.Noc-volver:hover {
+    transform: scale(1.1);
+}
+
+.Noc-titulo-contenedor {
+    background-image: url('../../assets/imagenes/tabla.png');
+    background-size: 70% 100%;
+    background-repeat: no-repeat;
+    background-position: center;
+    height: 100px;
+    width: 800px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto;
+}
+
+.Noc-titulo-contenedor h2 {
+    color: #fdfefe;
+    text-shadow: 
+        2px 2px 0 #000066,
+        -2px -2px 0 #000066,
+        2px -2px 0 #000066,
+        -2px 2px 0 #000066;
+    margin: 0;
+    padding: 0;
+    font-size: 2rem;
+    text-align: center;
+}
+
+.Noc-estrellas {
+    position: absolute;
+    right: 10rem;
+    display: flex;
+    justify-content: flex-end;
+    min-width: 120px;
+}
+
+.star-grid-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.5rem;
+}
+
+.star-row-top, 
+.star-row-bottom {
+    display: flex;
+    justify-content: center;
+    gap: 0.5rem;
+}
+
+.Noc-estrella {
+    color: #fbbf24;
+    font-size: 3.5rem;
+    transition: transform 0.3s ease;
+    animation: starPop 0.5s ease-out;
+}
+
+@keyframes starPop {
+    0% {
+        transform: scale(0);
+        opacity: 0;
+    }
+    70% {
+        transform: scale(1.2);
+        opacity: 0.7;
+    }
+    100% {
+        transform: scale(1);
+        opacity: 1;
+    }
+}
+
+.Noc-tarjetas-container {
+    display: flex;
+    gap: 2rem;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 1rem;
+    box-sizing: border-box;
+}
+
+.Noc-tarjeta {
+    background: rgb(228, 228, 228);
+    border-radius: 1rem;
+    padding: 2rem;
+    width: 250px;
+    height: 320px;
+    text-align: center;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    animation: floatAnimation 3s ease-in-out infinite;
+    transition: all 0.3s ease;
+    cursor: pointer;
+    position: relative;
+    overflow: hidden;
+}
+
+.Noc-tarjeta:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 15px rgba(0, 0, 0, 0.2);
+}
+
+.Noc-tarjeta:nth-child(2) {
+    width: 270px;
+    height: 350px;
+    padding: 2.2rem;
+    transform: scale(1.05);
+    animation: floatAnimationMiddle 3s ease-in-out infinite;
+}
+
+.Noc-tarjeta:nth-child(2):hover {
+    transform: translateY(-5px) scale(1.05);
+}
+
+.Noc-imagen-juego {
+    width: 100%;
+    height: 150px;
+    margin-bottom: 1rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+}
+
+.Noc-imagen-juego img {
+    max-width: 100%;
+    max-height: 100%;
+    object-fit: contain;
+    transition: transform 0.3s ease;
+}
+
+.Noc-tarjeta:hover .Noc-imagen-juego img {
+    transform: scale(1.1);
+}
+
+.Noc-tarjeta h3 {
+    color: #1e40af;
+    font-size: 1.5rem;
+    margin-bottom: 0.5rem;
+    position: relative;
+    z-index: 1;
+}
+
+.Noc-tarjeta p {
+    color: #6b7280;
+    margin-bottom: 1.5rem;
+    position: relative;
+    z-index: 1;
+}
+
+.Noc-play-button {
+    background: #4ade80;
+    color: white;
+    border: none;
+    padding: 0.75rem 2.5rem;
+    border-radius: 2rem;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    position: relative;
+    z-index: 1;
+}
+
+.Noc-play-button:hover {
+    background: #22c55e;
+    transform: scale(1.05);
+}
+
+@keyframes floatAnimation {
+    0%, 100% {
+        transform: translateY(0);
+    }
+    50% {
+        transform: translateY(-10px);
+    }
+}
+
+@keyframes floatAnimationMiddle {
+    0%, 100% {
+        transform: translateY(0) scale(1.05);
+    }
+    50% {
+        transform: translateY(-10px) scale(1.05);
+    }
+}
+
+.Noc-tarjeta:nth-child(1) {
+    animation-delay: 0s;
+}
+
+.Noc-tarjeta:nth-child(2) {
+    animation-delay: 0.5s;
+}
+
+.Noc-tarjeta:nth-child(3) {
+    animation-delay: 1s;
+}
+
+@media (max-width: 768px) {
+    .Noc-titulo-contenedor {
+        width: 300px;
+        height: 75px;
+    }
+    
+    .Noc-titulo-contenedor h2 {
+        font-size: 1.5rem;
+    }
+
+    .Noc-volver {
+        left: 5%;
+        width: 30px;
+        height: 30px;
+    }
+
+    .Noc-tarjeta {
+        width: 90%;
+        max-width: 250px;
+    }
+    
+    .Noc-tarjeta:nth-child(2) {
+        width: 90%;
+        max-width: 270px;
+    }
+
+    .Noc-estrellas {
+        right: 1rem;
+        min-width: 90px;
+    }
+
+    .Noc-estrella {
+        font-size: 2rem;
+    }
+
+    .star-grid-container {
+        gap: 0.3rem;
+    }
+}
+
+.Noc-seccion-juegos {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 2rem;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+.Noc-play-button:focus {
+    outline: 3px solid #4ade80;
+    outline-offset: 2px;
+}

@@ -1,0 +1,364 @@
+.juego-dibujo {
+    min-height: 100vh;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: rgba(224, 247, 255, 0.10);
+    overflow: hidden;
+    position: relative;
+    padding-top: 1rem;
+    justify-content: flex-start;
+}
+
+/* Header y título */
+.header {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 0.5rem;
+    padding: 0.5rem;
+    position: relative;
+}
+
+.titulo-contenedor {
+    background-image: url('../../../assets/imagenes/tabla.png');
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+    width: min(90%, 600px);
+    height: min(8vh, 80px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto;
+}
+
+/* Contenido del juego */
+.juego-contenido {
+    flex: 0 1 auto;
+    background: rgba(191, 219, 254, 0.98);
+    padding: 0.5rem;
+    border-radius: 1rem;
+    text-align: center;
+    width: min(90%, 600px);
+    margin: 0 auto;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    overflow: hidden;
+}
+
+.instruccion-header {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    margin-bottom: 0.5rem;
+    width: 100%;
+}
+
+.numero-guia {
+    font-size: clamp(1.2rem, 3vw, 2rem);
+    color: #1e40af;
+    margin-bottom: 0.5rem;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.numero-guia span {
+    font-size: clamp(1.4rem, 3.5vw, 2.2rem);
+    font-weight: bold;
+}
+
+.mensaje-error {
+    color: #ef4444;
+    font-size: clamp(0.9rem, 2vw, 1.1rem);
+    margin: 0.5rem 0;
+    padding: 0.5rem;
+    background-color: rgba(239, 68, 68, 0.1);
+    border-radius: 0.5rem;
+    width: min(90%, 400px);
+    text-align: center;
+}
+
+.canvas-container {
+    position: relative;
+    width: min(85vw, 350px);
+    aspect-ratio: 2/2.3;
+    margin: 0.3rem auto;
+    background: white;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    overflow: hidden;
+    height: auto;
+    max-height: 70vh;
+}
+
+.lienzo-principal, .lienzo-plantilla {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border-radius: 10px;
+}
+
+.lienzo-principal {
+    background: transparent;
+    z-index: 2;
+    touch-action: none;
+}
+
+.lienzo-plantilla {
+    background: white;
+    z-index: 1;
+    pointer-events: none;
+}
+
+/* Audio Button */
+.numero-audio {
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 0.5rem;
+    transition: transform 0.2s ease;
+}
+
+.numero-audio:hover {
+    transform: scale(1.1);
+}
+
+/* Controles */
+.controles {
+    display: flex;
+    gap: 0.5rem;
+    justify-content: center;
+    margin-top: 0.5rem;
+    width: 100%;
+    flex-wrap: wrap;
+    padding: 0.5rem;
+}
+
+.controles button {
+    padding: 0.5rem 1.5rem;
+    font-size: clamp(0.9rem, 2vw, 1.1rem);
+    border: none;
+    border-radius: 9999px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    background: #4ade80;
+    color: white;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    min-width: 100px;
+}
+
+.controles button:hover {
+    background: #22c55e;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.15);
+}
+
+/* Feedback */
+.feedback {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: clamp(4rem, 8vw, 6rem);
+    animation: bounce 1.5s ease-in-out;
+    pointer-events: none;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+    z-index: 2000;
+}
+
+.feedback.correcto {
+    color: #fbbf24;
+}
+
+.feedback.incorrecto {
+    color: #ef4444;
+}
+
+/* Modal */
+.modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.6);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 2000;
+    backdrop-filter: blur(5px);
+}
+
+.modal-contenido {
+    background-color: white;
+    padding: clamp(1rem, 3vw, 2rem);
+    border-radius: 20px;
+    text-align: center;
+    animation: aparecer 0.3s ease-out;
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.2);
+    width: min(90%, 500px);
+}
+
+.modal-contenido h2 {
+    color: #fbbf24;
+    font-size: clamp(1.8rem, 4vw, 2.5rem);
+    margin-bottom: 1rem;
+}
+
+.modal-contenido p {
+    font-size: clamp(1.2rem, 3vw, 1.5rem);
+    margin-bottom: 1.5rem;
+    color: #4b5563;
+}
+
+.modal-contenido button {
+    padding: 0.75rem 2rem;
+    font-size: clamp(1rem, 2vw, 1.2rem);
+    border: none;
+    border-radius: 9999px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    background: #4ade80;
+    color: white;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.modal-contenido button:hover {
+    background: #22c55e;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.15);
+}
+
+/* Animaciones */
+@keyframes bounce {
+    0%, 100% { 
+        transform: translate(-50%, -50%) scale(1); 
+    }
+    50% { 
+        transform: translate(-50%, -50%) scale(1.2); 
+    }
+}
+
+@keyframes aparecer {
+    from { 
+        opacity: 0;
+        transform: scale(0.8);
+    }
+    to { 
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+/* Media queries */
+@media (max-height: 700px) {
+    .juego-contenido {
+        padding: 0.3rem;
+    }
+    
+    .canvas-container {
+        width: min(85vw, 400px);
+    }
+    
+    .controles {
+        margin-top: 0.3rem;
+    }
+    
+    .modal-contenido {
+        padding: 1rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .juego-dibujo {
+        padding-top: 0.5rem;
+    }
+
+    .juego-contenido {
+        width: 98%;
+        padding: 0.3rem;
+    }
+    
+    .canvas-container {
+        width: 100vw; 
+        aspect-ratio: 3/4;
+        margin: 0.5rem auto;
+        max-height: 65vh;
+    }
+    
+    .lienzo-principal, .lienzo-plantilla {
+        width: 100%;
+        height: 100%;
+        object-fit: contain;
+    }
+    
+    .controles {
+        flex-direction: row;
+        align-items: center;
+        gap: 0.5rem;
+    }
+    
+    .controles button {
+        width: min(45%, 150px);
+        padding: 0.4rem 1rem;
+    }
+}
+
+@media (orientation: landscape) and (max-height: 600px) {
+    .juego-dibujo {
+        padding-top: 0.3rem;
+    }
+    
+    .header {
+        margin-bottom: 0.3rem;
+    }
+    
+    .canvas-container {
+        height: 75vh;
+        width: auto;
+        max-height: 75vh;
+        aspect-ratio: 3/4;
+    }
+    
+    .titulo-contenedor {
+        height: min(6vh, 60px);
+    }
+
+    .numero-guia {
+        font-size: clamp(1rem, 2.5vw, 1.8rem);
+        margin-bottom: 0.3rem;
+    }
+}
+
+/* Ajustes de accesibilidad */
+@media (prefers-reduced-motion: reduce) {
+    .feedback,
+    .modal-contenido,
+    .controles button,
+    .numero-audio {
+        animation: none;
+        transition: none;
+    }
+}
+
+/* Ajustes de alto contraste */
+@media (prefers-contrast: high) {
+    .juego-contenido {
+        background: rgba(191, 219, 254, 1);
+    }
+    
+    .numero-guia {
+        color: #1e3a8a;
+    }
+}

@@ -1,0 +1,131 @@
+.Noc-header-container {
+    width: 100%;
+    padding: 1rem;
+}
+
+.Noc-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem;
+}
+
+.Noc-volver {
+    position: absolute;
+    left: 20%;
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    transition: transform 0.3s ease;
+    padding: 0;
+    width: 80px;
+    height: 50px;
+    background-image: url('../imagenes/flecha.png');
+    background-size: 100% 100%;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+.Noc-volver:hover {
+    transform: scale(1.1);
+}
+
+.Noc-titulo-contenedor {
+    background-image: url('../../assets/imagenes/tabla.png');
+    background-size: 100% 100%;
+    background-repeat: no-repeat;
+    background-position: center;
+    width: clamp(350px, 75%, 700px);
+    min-height: clamp(80px, 15vw, 120px);
+    height: auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto;
+    padding: clamp(0.8rem, 2vw, 1.5rem);
+    box-sizing: border-box;
+}
+
+.Noc-titulo-contenedor h2 {
+    color: #fdfefe;
+    text-shadow: 
+        2px 2px 0 #000066,
+        -2px -2px 0 #000066,
+        2px -2px 0 #000066,
+        -2px 2px 0 #000066;
+    margin: 0;
+    padding: clamp(0.3rem, 1.5vw, 0.8rem);
+    font-size: clamp(1.2rem, 3vw, 2rem);
+    text-align: center;
+    width: 100%;
+    line-height: 1.3;
+    word-wrap: break-word;
+}
+
+.star-grid-container {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.star-row-top,
+.star-row-bottom {
+    display: flex;
+    gap: 0.5rem;
+}
+
+.Noc-estrella {
+    font-size: 1.5rem;
+    color: #ffd700;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.2);
+}
+
+.Noc-estrellas {
+    margin-left: auto;
+}
+
+/* Móviles */
+@media (max-width: 768px) {
+    .Noc-titulo-contenedor {
+        width: 450px;
+        min-width: 400px;
+        height: clamp(60px, 15vw, 85px);
+    }
+    
+    .Noc-titulo-contenedor h2 {
+        font-size: clamp(1.1rem, 4vw, 1.6rem);
+        padding: 0.5rem;
+    }
+
+    .Noc-volver {
+        left: 5%;
+    }
+}
+
+/* Ajustes específicos para móviles medianos */
+@media (max-width: 480px) {
+    .Noc-titulo-contenedor {
+        width: 400px;
+        min-width: 380px;
+    }
+}
+
+/* Ajustes para pantallas muy pequeñas */
+@media (max-width: 320px) {
+    .Noc-titulo-contenedor {
+        width: 350px;
+        min-width: 320px;
+    }
+}
+
+/* Ajustes para orientación landscape en móviles */
+@media (max-height: 500px) and (orientation: landscape) {
+    .Noc-titulo-contenedor {
+        width: 450px;
+        min-height: clamp(55px, 18vh, 75px);
+    }
+    
+    .Noc-titulo-contenedor h2 {
+        font-size: clamp(1rem, 3.2vw, 1.3rem);
+    }
+}

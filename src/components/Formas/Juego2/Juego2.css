@@ -1,0 +1,300 @@
+.formas-j2-contenedor {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 2rem;
+    background-color: rgba(224, 247, 255, 0.10);
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+}
+
+/* Header y título */
+.formas-j2-header {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 2rem;
+    padding: 1rem;
+    position: relative;
+}
+
+.formas-j2-titulo-contenedor {
+    background-image: url('../../../assets/imagenes/tabla.png');
+    background-size: 70% 100%;
+    background-repeat: no-repeat;
+    background-position: center;
+    height: 100px;
+    width: 600px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto;
+}
+
+.formas-j2-titulo-contenedor h2 {
+    color: #fdfefe;
+    text-shadow: 
+        2px 2px 0 #000066,
+        -2px -2px 0 #000066,
+        2px -2px 0 #000066,
+        -2px 2px 0 #000066;
+    margin: 0;
+    padding: 0;
+    font-size: 2rem;
+    text-align: center;
+}
+
+.formas-j2-volver {
+    position: absolute;
+    left: 20%;
+    background: transparent;
+    color: #000000;
+    font-size: 3rem;
+    padding: 0.5rem;
+    border: none;
+    cursor: pointer;
+    transition: transform 0.3s ease;
+}
+
+.formas-j2-volver:hover {
+    transform: scale(1.1);
+}
+
+/* Contenido del juego */
+.formas-j2-juego-contenido {
+    background: rgba(191, 219, 254, 0.98);
+    padding: 2rem;
+    border-radius: 1rem;
+    text-align: center;
+    width: 90%;
+    max-width: 900px;
+    margin: 0 auto;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+}
+
+/* Instrucción y Audio */
+.formas-j2-instruccion {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+    margin-bottom: 2rem;
+}
+
+.formas-j2-instruccion-header {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
+    background: white;
+    padding: 1rem;
+    border-radius: 1rem;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.formas-j2-instruccion-header p {
+    font-size: 1.8rem;
+    color: #1e3a8a;
+    font-weight: bold;
+    margin: 0;
+}
+
+/* Grid de opciones en horizontal */
+.formas-j2-opciones-imagenes {
+    display: flex;
+    justify-content: center;
+    gap: 2rem;
+    margin-top: 2rem;
+    flex-direction: row;
+}
+
+.formas-j2-opcion-imagen-container {
+    background: white;
+    border-radius: 1rem;
+    padding: 1rem;
+    width: 250px;
+    height: 250px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.formas-j2-opcion-imagen-container:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+}
+
+.formas-j2-opcion-imagen {
+    max-width: 100%;
+    max-height: 100%;
+    object-fit: contain;
+}
+
+/* Estrellas */
+.formas-j2-estrellas {
+    position: absolute;
+    right: 20%;
+    font-size: 2.5rem;
+    color: #fbbf24;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+/* Feedback */
+.formas-j2-feedback {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 6rem;
+    animation: formas-j2-bounce 1.5s ease-in-out;
+    pointer-events: none;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+    z-index: 2000;
+}
+
+.formas-j2-feedback.formas-j2-correcto {
+    color: #fbbf24;
+}
+
+.formas-j2-feedback.formas-j2-incorrecto {
+    color: #ef4444;
+}
+
+/* Modal */
+.formas-j2-modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.6);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 2000;
+}
+
+.formas-j2-modal-contenido {
+    background-color: white;
+    padding: 3rem;
+    border-radius: 20px;
+    text-align: center;
+    animation: formas-j2-aparecer 0.3s ease-out;
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.2);
+}
+
+.formas-j2-modal-contenido h2 {
+    color: #fbbf24;
+    font-size: 2.5rem;
+    margin-bottom: 1.5rem;
+}
+
+.formas-j2-modal-contenido p {
+    font-size: 1.5rem;
+    margin-bottom: 2rem;
+}
+
+.formas-j2-modal-contenido button {
+    padding: 1rem 2.5rem;
+    font-size: 1.2rem;
+    background: #4ade80;
+    color: white;
+    border: none;
+    border-radius: 9999px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.formas-j2-modal-contenido button:hover {
+    background: #22c55e;
+    transform: translateY(-2px);
+}
+
+/* Animaciones */
+@keyframes formas-j2-bounce {
+    0%, 100% { transform: translate(-50%, -50%) scale(1); }
+    50% { transform: translate(-50%, -50%) scale(1.2); }
+}
+
+@keyframes formas-j2-aparecer {
+    from { 
+        opacity: 0;
+        transform: scale(0.8);
+    }
+    to { 
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+/* Media Queries */
+@media (max-width: 1024px) {
+    .formas-j2-juego-contenido {
+        padding: 1.5rem;
+    }
+
+    .formas-j2-opcion-imagen-container {
+        width: 200px;
+        height: 200px;
+    }
+}
+
+@media (max-width: 768px) {
+    .formas-j2-titulo-contenedor {
+        width: 300px;
+        height: 75px;
+    }
+
+    .formas-j2-titulo-contenedor h2 {
+        font-size: 1.5rem;
+    }
+
+    .formas-j2-volver {
+        left: 5%;
+        font-size: 2rem;
+    }
+
+    .formas-j2-estrellas {
+        right: 5%;
+        font-size: 2rem;
+    }
+
+    .formas-j2-instruccion-header p {
+        font-size: 1.4rem;
+    }
+
+    .formas-j2-opcion-imagen-container {
+        width: 150px;
+        height: 150px;
+    }
+
+    .formas-j2-opciones-imagenes {
+        gap: 1rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .formas-j2-contenedor {
+        padding: 1rem;
+    }
+
+    .formas-j2-opciones-imagenes {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .formas-j2-opcion-imagen-container {
+        width: 200px;
+        height: 200px;
+    }
+
+    .formas-j2-instruccion-header p {
+        font-size: 1.2rem;
+    }
+}

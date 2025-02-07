@@ -1,0 +1,314 @@
+.Num-seccion-juegos {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 2rem;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+.Num-header {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 1rem;
+    padding: 1rem;
+    position: relative;
+}
+
+.Num-volver {
+    position: absolute;
+    left: 20%;
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    transition: transform 0.3s ease;
+    padding: 0;
+    width: 80px;
+    height: 50px;
+    background-image: url('../../assets/imagenes/flecha.png');
+    background-size: 100% 100%;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+.Num-volver:hover {
+    transform: scale(1.1);
+}
+
+.Num-titulo-contenedor {
+    background-image: url('../../assets/imagenes/tabla.png');
+    background-size: 100% 100%;
+    background-repeat: no-repeat;
+    background-position: center;
+    width: clamp(280px, 60%, 600px); 
+    min-height: clamp(80px, 15vw, 120px);
+    height: auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto;
+    padding: clamp(0.8rem, 2vw, 1.5rem);
+    box-sizing: border-box;
+}
+
+.Num-titulo-contenedor h2 {
+    color: #fdfefe;
+    text-shadow: 
+        2px 2px 0 #000066,
+        -2px -2px 0 #000066,
+        2px -2px 0 #000066,
+        -2px 2px 0 #000066;
+    margin: 0;
+    padding: clamp(0.3rem, 1.5vw, 0.8rem);
+    font-size: clamp(1.2rem, 3vw, 2rem);
+    text-align: center;
+    width: 100%;
+    line-height: 1.3;
+    word-wrap: break-word;
+}
+
+.Num-estrellas {
+    position: absolute;
+    right: 10rem;
+    display: flex;
+    justify-content: flex-end;
+    min-width: 120px;
+}
+
+.star-grid-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.5rem;
+}
+
+.star-row-top, 
+.star-row-bottom {
+    display: flex;
+    justify-content: center;
+    gap: 0.5rem;
+}
+
+.Num-estrella {
+    color: #fbbf24;
+    font-size: 3.5rem;
+    transition: transform 0.3s ease;
+    animation: starPop 0.5s ease-out;
+}
+
+@keyframes starPop {
+    0% {
+        transform: scale(0);
+        opacity: 0;
+    }
+    70% {
+        transform: scale(1.2);
+        opacity: 0.7;
+    }
+    100% {
+        transform: scale(1);
+        opacity: 1;
+    }
+}
+
+.Num-tarjetas-container {
+    display: flex;
+    gap: 2rem;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 1rem;
+    box-sizing: border-box;
+}
+
+.Num-tarjeta {
+    background: rgb(228, 228, 228);
+    border-radius: 1rem;
+    padding: 2rem;
+    width: 250px;
+    height: 320px;
+    text-align: center;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    animation: floatAnimation 3s ease-in-out infinite;
+    transition: all 0.3s ease;
+    cursor: pointer;
+    position: relative;
+    overflow: hidden;
+}
+
+.Num-tarjeta:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 15px rgba(0, 0, 0, 0.2);
+}
+
+.Num-tarjeta:nth-child(2) {
+    width: 270px;
+    height: 350px;
+    padding: 2.2rem;
+    transform: scale(1.05);
+    animation: floatAnimationMiddle 3s ease-in-out infinite;
+}
+
+.Num-tarjeta:nth-child(2):hover {
+    transform: translateY(-5px) scale(1.05);
+}
+
+.Num-imagen-juego {
+    width: 100%;
+    height: 150px;
+    margin-bottom: 1rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+}
+
+.Num-imagen-juego img {
+    max-width: 100%;
+    max-height: 100%;
+    object-fit: contain;
+    transition: transform 0.3s ease;
+}
+
+.Num-tarjeta:hover .Num-imagen-juego img {
+    transform: scale(1.1);
+}
+
+.Num-tarjeta h3 {
+    color: #1e40af;
+    font-size: 1.5rem;
+    margin-bottom: 0.5rem;
+    position: relative;
+    z-index: 1;
+}
+
+.Num-tarjeta p {
+    color: #6b7280;
+    margin-bottom: 1.5rem;
+    position: relative;
+    z-index: 1;
+}
+
+.Num-play-button {
+    background: #4ade80;
+    color: white;
+    border: none;
+    padding: 0.75rem 2.5rem;
+    border-radius: 2rem;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    position: relative;
+    z-index: 1;
+}
+
+.Num-play-button:hover {
+    background: #22c55e;
+    transform: scale(1.05);
+}
+
+@keyframes floatAnimation {
+    0%, 100% {
+        transform: translateY(0);
+    }
+    50% {
+        transform: translateY(-10px);
+    }
+}
+
+@keyframes floatAnimationMiddle {
+    0%, 100% {
+        transform: translateY(0) scale(1.05);
+    }
+    50% {
+        transform: translateY(-10px) scale(1.05);
+    }
+}
+
+.Num-tarjeta:nth-child(1) {
+    animation-delay: 0s;
+}
+
+.Num-tarjeta:nth-child(2) {
+    animation-delay: 0.5s;
+}
+
+.Num-tarjeta:nth-child(3) {
+    animation-delay: 1s;
+}
+
+@media (max-width: 768px) {
+    .Num-titulo-contenedor {
+        width: clamp(250px, 70%, 400px);
+        min-height: clamp(60px, 12vw, 100px);
+    }
+    
+    .Num-titulo-contenedor h2 {
+        font-size: clamp(1rem, 4vw, 1.5rem);
+    }
+
+    .Num-volver {
+        left: 5%;
+        width: 30px;
+        height: 30px;
+    }
+
+    .Num-tarjeta {
+        width: 90%;
+        max-width: 250px;
+    }
+    
+    .Num-tarjeta:nth-child(2) {
+        width: 90%;
+        max-width: 270px;
+    }
+
+    .Num-estrellas {
+        right: 1rem;
+        min-width: 90px;
+    }
+
+    .Num-estrella {
+        font-size: 2rem;
+    }
+
+    .star-grid-container {
+        gap: 0.3rem;
+    }
+}
+
+.Num-seccion-juegos {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 2rem;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+.Num-play-button:focus {
+    outline: 3px solid #4ade80;
+    outline-offset: 2px;
+}
+
+.Num-tarjeta:focus-within {
+    outline: 3px solid #4ade80;
+    outline-offset: 2px;
+}
+
+.Num-play-button:active {
+    transform: scale(0.98);
+}
+
+.Num-tarjeta:active {
+    transform: scale(0.98);
+}
