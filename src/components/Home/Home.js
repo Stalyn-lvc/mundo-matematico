@@ -12,7 +12,7 @@ function Home() {
         <div className="Home-seccion-modulos">
             <div className="Home-header">
                 <div className="Home-titulo-contenedor">
-                    <h2>Modelo Matemático</h2>
+                    <h2>Mundo Matemático</h2>
                 </div>
             </div>
 
